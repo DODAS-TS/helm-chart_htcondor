@@ -1,0 +1,98 @@
+{{- if .Values.nfs.enabled -}}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs
+spec:
+  capacity:
+    storage: "{{.Values.nfs.size}}"
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: "{{.Values.nfs.server}}"
+    path: "{{.Values.nfs.path}}"
+{{- end }}
+
+---
+
+{{- if .Values.nfs.enabled -}}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ""
+  resources:
+    requests:
+      storage: "{{.Values.nfs.size}}"
+{{- end }}
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wn-pod
+  labels:
+    app: wn
+spec:
+  template:
+    metadata:
+      labels:
+        app: wn
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: condor
+                operator: NotIn
+                values:
+                - ccb
+                - schedd
+      hostNetwork: true
+      containers:
+      - name: ccb
+        imagePullPolicy: Always
+        args:
+        - wn 
+        env:
+        - name: CONDOR_HOST 
+          value: "{{ .Values.CONDOR_HOST }}"
+        - name: PROXY_CACHE 
+          value: "{{ .Values.PROXY_CACHE }}:{{ .Values.PROXY_CACHE_Port }}"
+        - name: CCB_ADDRESS
+          value:  "{{ .Values.CCB_HOST }}"
+        - name: SLOT_TYPE_1
+          value: "{{ .Values.SLOT_TYPE_1 }}"
+
+        image: "{{ .Values.condor_image }}"
+#        livenessProbe:
+#          exec:
+#            command:
+#            - curl
+#            - -f
+#            - http://localhost:8080/check_health
+#        volumeMounts:
+#        - name: nfs
+#          mountPath: "/mnt"
+#        - name: cvmfs
+#          mountPath: "/cvmfs"
+
+#      volumes:
+#      - name: nfs
+#        persistentVolumeClaim:
+#          claimName: nfs
+#      - name: cvmfs
+#        hostPath:
+#          path: /cvmfs
+#          type: Directory 
+
+  selector:
+    matchLabels:
+      app: wn 
+
+  replicas: 1
