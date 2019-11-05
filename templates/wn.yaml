@@ -76,20 +76,28 @@ spec:
 #            - curl
 #            - -f
 #            - http://localhost:8080/check_health
-#        volumeMounts:
-#        - name: nfs
-#          mountPath: "/mnt"
-#        - name: cvmfs
-#          mountPath: "/cvmfs"
+        volumeMounts:
+{{- if .Values.nfs.enabled -}}
+        - name: nfs
+          mountPath: "/mnt"
+{{ - end }}
+{{- if .Values.cvmfs.enabled -}}
+        - name: cvmfs
+          mountPath: "/cvmfs"
+{{ - end }}
 
-#      volumes:
-#      - name: nfs
-#        persistentVolumeClaim:
-#          claimName: nfs
-#      - name: cvmfs
-#        hostPath:
-#          path: /cvmfs
-#          type: Directory 
+      volumes:
+{{- if .Values.nfs.enabled -}}
+      - name: nfs
+        persistentVolumeClaim:
+          claimName: nfs
+{{ - end }}
+{{- if .Values.cvmfs.enabled -}}
+      - name: cvmfs
+        hostPath:
+          path: /cvmfs
+          type: Directory
+{{ - end }}
 
   selector:
     matchLabels:
