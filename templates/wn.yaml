@@ -76,6 +76,13 @@ spec:
 #            - curl
 #            - -f
 #            - http://localhost:8080/check_health
+        resources:
+          limits:
+            memory: "2500Mi"
+            cpu: "1.5"
+          requests: 
+            memory: "2048Mi"
+            cpu: "1"
         volumeMounts:
 {{- if .Values.nfs.enabled -}}
         - name: nfs
