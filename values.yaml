@@ -31,6 +31,9 @@ cvmfs:
 IAM_TOKEN:
 IAM_CLIENT_ID:
 IAM_CLIENT_SECRET:
+IAM_SCIM_CLIENT_ID:
+IAM_SCIM_SECRET:
+IAM_MAP_GROUP:
 PROXY_AUDIENCE: "https://dodas-tts.cloud.cnaf.infn.it"
 PROXY_TTS: "https://dodas-tts.cloud.cnaf.infn.it"
 PROXY_IAM_ENDPOINT: "https://dodas-iam.cloud.cnaf.infn.it/"
