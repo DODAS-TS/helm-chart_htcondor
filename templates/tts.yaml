@@ -46,6 +46,12 @@ spec:
           value: "{{ .Values.IAM_CLIENT_ID}}"
         - name: IAM_CLIENT_SECRET
           value: "{{ .Values.IAM_CLIENT_SECRET}}"
+        - name: IAM_MAP_CLIENT_ID
+          value: "{{ .Values.IAM_SCIM_CLIENT_ID}}"
+        - name: IAM_MAP_CLIENT_SECRET
+          value: "{{ .Values.IAM_SCIM_SECRET}}"
+        - name: IAM_MAP_GROUP
+          value: "{{ .Values.IAM_MAP_GROUP}}"
         - name: PROXY_AUDIENCE
           value:  "{{ .Values.PROXY_AUDIENCE}}"
         - name: PROXY_TTS
