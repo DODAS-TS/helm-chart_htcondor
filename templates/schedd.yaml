@@ -87,7 +87,21 @@ spec:
           value: "{{ .Values.LOWPORT}}"
         - name: HIGHPORT
           value: "{{ .Values.HIGHPORT}}"
-
+        - name: SEC_DAEMON_AUTHENTICATION_METHODS
+          value: CLAIMTOBE
+        - name: SEC_CLIENT_AUTHENTICATION_METHODS
+          value: CLAIMTOBE
+        - name: SEC_NEGOTIATOR_AUTHENTICATION_METHODS
+          value: CLAIMTOBE
+        - name: SEC_ADVERTISE_STARTD_AUTHENTICATION_METHODS
+          value: CLAIMTOBE
+        - name: CONDOR_DAEMON_LIST
+          value: COLLECTOR, MASTER, NEGOTIATOR, SCHEDD, STARTD
+        securityContext:
+          capabilities:
+            add:
+            - CAP_SYS_ADMIN
+          privileged: true
         image: "{{ .Values.condor_image }}"
 #        livenessProbe:
 #          exec:

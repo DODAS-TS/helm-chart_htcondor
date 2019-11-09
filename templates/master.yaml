@@ -39,6 +39,16 @@ spec:
           value:   "{{ .Values.CONDOR_HOST }}"
         - name: PROXY_CACHE 
           value: "{{ .Values.PROXY_CACHE }}:{{ .Values.PROXY_CACHE_Port }}"
+        - name: SEC_DAEMON_AUTHENTICATION_METHODS
+          value: CLAIMTOBE
+        - name: SEC_CLIENT_AUTHENTICATION_METHODS
+          value: CLAIMTOBE
+        - name: SEC_NEGOTIATOR_AUTHENTICATION_METHODS
+          value: CLAIMTOBE
+        - name: SEC_ADVERTISE_STARTD_AUTHENTICATION_METHODS
+          value: CLAIMTOBE
+        - name: CONDOR_DAEMON_LIST
+          value: COLLECTOR, MASTER, NEGOTIATOR, SCHEDD, STARTD
 
         image: "{{ .Values.condor_image }}"
 #        livenessProbe:
