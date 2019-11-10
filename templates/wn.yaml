@@ -43,6 +43,9 @@ spec:
       labels:
         app: wn
     spec:
+      dnsConfig:
+        nameservers:
+        - 8.8.8.8
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -53,9 +56,8 @@ spec:
                 values:
                 - ccb
                 - schedd
-      hostNetwork: true
       containers:
-      - name: ccb
+      - name: wn
         imagePullPolicy: Always
         args:
         - wn 

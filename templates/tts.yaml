@@ -36,6 +36,9 @@ spec:
                 values:
                 - ccb
                 - schedd
+      dnsConfig:
+        nameservers:
+        - 8.8.8.8
       containers: 
       - name: tts-cache
         imagePullPolicy: Always
