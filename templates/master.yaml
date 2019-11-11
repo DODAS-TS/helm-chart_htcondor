@@ -35,6 +35,8 @@ spec:
         args:
         - master 
         env:
+        - name: NETWORK_INTERFACE
+          value:   "{{ .Values.CONDOR_HOST }}"          
         - name: CONDOR_HOST 
           value:   "{{ .Values.CONDOR_HOST }}"
         - name: PROXY_CACHE 
@@ -54,9 +56,12 @@ spec:
 #        livenessProbe:
 #          exec:
 #            command:
-#            - curl
-#            - -f
-#            - http://localhost:8080/check_health
+#            - voms-proxy-info
+#            - --file
+#            - /root/gwms_proxy
+#            - --valid
+#          initialDelaySeconds: 300
+#          periodSeconds: 3600
   selector:
     matchLabels:
       app: ccb 

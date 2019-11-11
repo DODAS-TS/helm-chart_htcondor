@@ -69,6 +69,22 @@ spec:
         - name: PROXY_CACHE_DIR
           value: "/tmp"
         image:  "{{ .Values.tts_image}}"
+#        livenessProbe:
+#          exec:
+#            command:
+#            - voms-proxy-info
+#            - --file
+#            - /tmp/userproxy.pem
+#            - --valid
+#          initialDelaySeconds: 300
+#          periodSeconds: 3600
+        volumeMounts:
+        - mountPath: "/tmp"
+          name: temp
+      volumes:
+      - name: temp
+        hostPath:
+          path: /tmp
   selector:
     matchLabels:
       app: tts 

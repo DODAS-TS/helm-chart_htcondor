@@ -43,6 +43,7 @@ spec:
       labels:
         app: wn
     spec:
+      dnsPolicy: None
       dnsConfig:
         nameservers:
         - 8.8.8.8
@@ -75,9 +76,12 @@ spec:
 #        livenessProbe:
 #          exec:
 #            command:
-#            - curl
-#            - -f
-#            - http://localhost:8080/check_health
+#            - voms-proxy-info
+#            - --file
+#            - /root/gwms_proxy
+#            - --valid
+#          initialDelaySeconds: 300
+#          periodSeconds: 3600
         resources:
           limits:
             memory: "2500Mi"

@@ -106,9 +106,12 @@ spec:
 #        livenessProbe:
 #          exec:
 #            command:
-#            - curl
-#            - -f
-#            - http://localhost:8080/check_health
+#            - voms-proxy-info
+#            - --file
+#            - /root/gwms_proxy
+#            - --valid
+#          initialDelaySeconds: 300
+#          periodSeconds: 3600
         volumeMounts:
         - mountPath: "/var/lib/condor/spool/"
           name: myspool
