@@ -6,7 +6,7 @@ kind: ConfigMap
 metadata:
   name: default-local
 data:
-  default.local: {{ .Values.cvmfs.default-local-config}}
+  default.local: {{ .Values.cvmfs.default-local-config }}
   # other file: put here
 ---
 apiVersion: apps/v1
