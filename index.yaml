@@ -1,13 +1,13 @@
 apiVersion: v1
 entries:
-  htcondor:
+  helm-chart_htcondor:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2019-11-13T16:30:03.9063217+01:00"
+    created: "2019-11-13T18:09:38.2923201+01:00"
     description: A Helm chart for HTCondor on Kubernetes
-    digest: 24c6a9d75a7f0b52314436ac8f2884281f6062d8459f58148fcfdbc681d6cdfd
-    name: htcondor
+    digest: ef2b59241d2bac68e35e3c32644b10b7cbd0df9fdc9f7a9d751925301b69a29c
+    name: helm-chart_htcondor
     urls:
-    - https://dodas-ts.github.io/helm-chart_htcondor/htcondor-0.1.0.tgz
+    - https://dodas-ts.github.io/helm-chart_htcondor/helm-chart_htcondor-0.1.0.tgz
     version: 0.1.0
-generated: "2019-11-13T16:30:03.8976179+01:00"
+generated: "2019-11-13T18:09:38.2865408+01:00"
