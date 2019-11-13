@@ -1,5 +1,5 @@
 RELEASE = dodasts
-CHART_NAME = htcondor
+CHART_NAME = helm-chart_htcondor
 GH_PAGES = https://dodas-ts.github.io/helm-chart_htcondor
 COMMIT_MSG = "v2.0.0-dodas-rc1"
 CURRENT_BRANCH = "master"
