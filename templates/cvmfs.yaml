@@ -47,6 +47,9 @@ spec:
       containers:
       - name: cvmfs
         image: "{{ .Values.cvmfs.image }}"
+        env:
+        - name: REPO_LIST
+          value:   "{{ .Values.cvmfs.REPO_LIST }}"
         securityContext:
           privileged: true
           capabilities:

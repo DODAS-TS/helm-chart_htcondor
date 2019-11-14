@@ -73,15 +73,15 @@ spec:
           value: "{{ .Values.SLOT_TYPE_1 }}"
 
         image: "{{ .Values.condor_image }}"
-#        livenessProbe:
-#          exec:
-#            command:
-#            - voms-proxy-info
-#            - --file
-#            - /root/gwms_proxy
-#            - --valid
-#          initialDelaySeconds: 300
-#          periodSeconds: 3600
+        livenessProbe:
+          exec:
+            command:
+            - voms-proxy-info
+            - --file
+            - /root/gwms_proxy
+            - --valid
+          initialDelaySeconds: 300
+          periodSeconds: 600
         resources:
           limits:
             memory: "2500Mi"

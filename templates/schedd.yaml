@@ -103,15 +103,15 @@ spec:
             - CAP_SYS_ADMIN
           privileged: true
         image: "{{ .Values.condor_image }}"
-#        livenessProbe:
-#          exec:
-#            command:
-#            - voms-proxy-info
-#            - --file
-#            - /root/gwms_proxy
-#            - --valid
-#          initialDelaySeconds: 300
-#          periodSeconds: 3600
+        livenessProbe:
+          exec:
+            command:
+            - voms-proxy-info
+            - --file
+            - /root/gwms_proxy
+            - --valid
+          initialDelaySeconds: 300
+          periodSeconds: 600
         volumeMounts:
         - mountPath: "/var/lib/condor/spool/"
           name: myspool

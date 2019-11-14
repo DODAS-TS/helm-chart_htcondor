@@ -53,15 +53,15 @@ spec:
           value: COLLECTOR, MASTER, NEGOTIATOR, SCHEDD, STARTD
 
         image: "{{ .Values.condor_image }}"
-#        livenessProbe:
-#          exec:
-#            command:
-#            - voms-proxy-info
-#            - --file
-#            - /root/gwms_proxy
-#            - --valid
-#          initialDelaySeconds: 300
-#          periodSeconds: 3600
+        livenessProbe:
+          exec:
+            command:
+            - voms-proxy-info
+            - --file
+            - /root/gwms_proxy
+            - --valid
+          initialDelaySeconds: 300
+          periodSeconds: 600
   selector:
     matchLabels:
       app: ccb 
