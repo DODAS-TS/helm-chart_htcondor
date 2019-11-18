@@ -27,8 +27,8 @@ nfs:
 
 cvmfs:
   enabled: false
-  image: cloudpg/cvmfs
-  REPO_LIST:
+  image: cloudpg/cvmfs:k8s
+  REPO_LIST: cms.cern.ch oasis.cern.ch
   defaultLocalConfig: |-
     property.1=value-1
     property.2=value-2

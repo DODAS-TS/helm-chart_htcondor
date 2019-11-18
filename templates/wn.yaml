@@ -79,7 +79,7 @@ spec:
             - voms-proxy-info
             - --file
             - /root/gwms_proxy
-            - --valid
+            - --exists
           initialDelaySeconds: 300
           periodSeconds: 600
         resources:
